@@ -1,0 +1,4 @@
+DirectoryIndex index.php
+
+#настройка флагов php
+php_flag short_open_tag on

@@ -1,0 +1,41 @@
+function setMathPow(str) {
+	var _str = str;
+	var newString = "";
+	var leftSubstr, rightSubstr;
+	var leftArg, rightArg;
+	var mathStr;
+	var lstr, rstr;
+	for(var i = 0; i < _str.length; i++) {
+		// ищем "^"
+		if(_str[i] == "^") {
+			//получаем подстроку до ^ и после 
+			leftSubstr = _str.substr(0, i);
+			rightSubstr = _str.substr(i+1);
+
+			
+			var st = 0;
+
+			// получаем аргументы для функции Math.pow
+			leftArg = reverseStr(getArgForPow(reverseStr(leftSubstr), ')'));
+			rightArg = getArgForPow(rightSubstr, '(');
+
+			mathStr ="Math.pow(" + setMathPow(leftArg) + "," + setMathPow(rightArg) + ")";
+			
+			lstr = _str.substr(0, i - leftArg.length);
+			rstr = _str.substr(i + rightArg.length + 1);
+
+			var EEE = 90;
+
+			newString = lstr + mathStr + rstr;
+
+			i += rightArg.length;
+
+			var TT = 0;
+		}
+		else 
+			if (_str[i] != "(" && _str[i] != ")")
+				newString += _str[i];
+	}
+	var TY= 9;
+	return newString;
+}
